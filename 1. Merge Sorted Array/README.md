@@ -120,9 +120,10 @@ var merge = function (nums1, m, nums2, n) {
 #### Complexity Analysis:
 
 - **Time Complexity:** The loop runs for a maximum of `m + n` iterations, where `m` is the length of `nums1` and `n` is the length of `nums2`. Thus, the time complexity is **O(m + n)**.
+
 - **Space Complexity:** The extra space used by the `merged` array is **O(m + n)**, as it holds the merged result.
 
-### Approach 2: Using Insertion Sort
+### Approach 2: In-Place Merging (Insertion Sort-like)
 
 You can also consider using insertion sort logic, where you shift elements of `nums1` to the right to make space for elements from `nums2`. Then, insert elements from `nums2` at the appropriate positions in `nums1`.
 
@@ -179,67 +180,5 @@ var merge = function (nums1, m, nums2, n) {
 #### Complexity Analysis:
 
 - **Time Complexity:** The loop runs for a maximum of `m + n` iterations, where `m` is the length of `nums1` and `n` is the length of `nums2`. The additional shifting of elements in `nums1` can contribute to a time complexity of **O(m + n)**.
+
 - **Space Complexity:** The space complexity is constant **O(1)**, as no additional space is used except for a few pointers.
-
-### Approach 3: Reverse Merging
-
-This approach involves starting from the end of the merged array and comparing elements from both input arrays. You place the larger element at the end of `nums1`, and decrement the corresponding index. This way, you can avoid moving elements around as much.
-
-#### Implementation:
-
-```javascript
-var merge = function (nums1, m, nums2, n) {
-  let i = m - 1,
-    j = n - 1,
-    k = m + n - 1;
-
-  while (i >= 0 && j >= 0) {
-    if (nums1[i] > nums2[j]) {
-      nums1[k] = nums1[i];
-      i--;
-    } else {
-      nums1[k] = nums2[j];
-      j--;
-    }
-    k--;
-  }
-
-  while (j >= 0) {
-    nums1[k] = nums2[j];
-    j--;
-    k--;
-  }
-};
-```
-
-**Step-by-Step Explanation:**
-
-1. Initialize three pointers `i`, `j`, and `k`. Pointer `i` starts at the last valid element in `nums1`, pointer `j` starts at the last element in `nums2`, and pointer `k` starts at the last position of the merged array.
-2. Use a loop to compare elements from both arrays while `i` and `j` are within valid bounds:
-   - If `nums1[i]` is greater than `nums2[j]`, move `nums1[i]` to position `k` and decrement `i`.
-   - Otherwise, move `nums2[j]` to position `k` and decrement `j`.
-   - Decrement `k` after each placement.
-3. If there are remaining elements in `nums2` after the loop, copy them to the remaining positions in `nums1`.
-
-#### Pros:
-
-- Similar to Approach 2, it modifies `nums1` in-place without requiring extra space.
-- It avoids shifting elements by starting from the end, which can be more efficient than Approach 2 for larger arrays.
-
-#### Cons:
-
-- As with Approach 2, it involves shifting elements, which can still be time-consuming for larger arrays.
-
-#### Real-Time Usage Scenarios:
-
-- - This approach is also useful when memory is a concern and you want to minimize the use of extra space.
-- It's especially beneficial when you want to minimize memory usage while optimizing the time complexity compared to Approach 2.
-
-#### Comlexity Analysis:
-
-- **Time Complexity:** The loop runs for a maximum of `m + n` iterations, leading to a time complexity of **O(m + n)**.
-- **Space Complexity:** The space complexity is constant **O(1)**, as no additional space is used except for pointers.
-
-#### Conclusion:
-
-Each of the three approaches provides a solution to merge two sorted arrays in-place. Approach 1 is simple but uses extra space. Approach 2 and Approach 3 are memory-efficient, with Approach 3 being preferred for larger arrays due to minimized element shifting. The choice of approach depends on the specific scenario and trade-offs between time complexity and space complexity.
