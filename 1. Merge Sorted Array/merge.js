@@ -20,54 +20,46 @@ var merge = function (nums1, m, nums2, n) {
   }
 };
 
-// Example 1:
-var mergeExample1 = function () {
-  const nums1 = [1, 2, 3, 0, 0, 0];
-  const m = 3;
-  const nums2 = [2, 5, 6];
-  const n = 3;
+const testCases = [
+  {
+    nums1: [1, 2, 3, 0, 0, 0],
+    m: 3,
+    nums2: [2, 5, 6],
+    n: 3,
+  },
+  {
+    nums1: [1, 2, 4, 5, 6, 0],
+    m: 5,
+    nums2: [3],
+    n: 1,
+  },
+  {
+    nums1: [0],
+    m: 0,
+    nums2: [1],
+    n: 1,
+  },
+  {
+    nums1: [4, 5, 6, 0, 0, 0],
+    m: 3,
+    nums2: [1, 2, 3],
+    n: 3,
+  },
+];
 
-  merge(nums1, m, nums2, n);
-  console.log(nums1); // Output: [1, 2, 2, 3, 5, 6]
+const executeDriverCode = (testCases) => {
+  let count = 1;
+  for (const testCase of testCases) {
+    const { nums1, m, nums2, n } = testCase;
+    console.log("Case", count++ + ":");
+    console.log("nums1:", nums1);
+    console.log("m:", m);
+    console.log("nums2:", nums2);
+    console.log("n:", n);
+    merge(nums1, m, nums2, n);
+    console.log("Merged Array is:", nums1);
+    console.log("\n");
+  }
 };
 
-mergeExample1();
-
-// Example 2:
-var mergeExample2 = function () {
-  const nums1 = [1, 2, 4, 5, 6, 0];
-  const m = 5;
-  const nums2 = [3];
-  const n = 1;
-
-  merge(nums1, m, nums2, n);
-  console.log(nums1); // Output: [1, 2, 3, 4, 5, 6]
-};
-
-mergeExample2();
-
-// Example 3:
-var mergeExample3 = function () {
-  const nums1 = [0];
-  const m = 0;
-  const nums2 = [1];
-  const n = 1;
-
-  merge(nums1, m, nums2, n);
-  console.log(nums1); // Output: [1]
-};
-
-mergeExample3();
-
-// Example 4:
-var mergeExample4 = function () {
-  const nums1 = [4, 5, 6, 0, 0, 0];
-  const m = 3;
-  const nums2 = [1, 2, 3];
-  const n = 3;
-
-  merge(nums1, m, nums2, n);
-  console.log(nums1); // Output: [1, 2, 3, 4, 5, 6]
-};
-
-mergeExample4();
+executeDriverCode(testCases);

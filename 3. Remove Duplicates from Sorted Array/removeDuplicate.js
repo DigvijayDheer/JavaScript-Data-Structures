@@ -20,26 +20,25 @@ var removeDuplicates = function (nums) {
   return uniqueIndex + 1; // Return the count of unique elements
 };
 
-// Example 1:
-const nums1 = [1, 1, 2];
-console.log(removeDuplicates(nums1));
+const testCases = [
+  [1, 1, 2],
+  [0, 0, 1, 1, 1, 2, 2, 3, 3, 4],
+  [-2, -2, 0, 0, 2, 2, 3, 3, 5, 5],
+  [10, 10, 10, 10, 10],
+  [4, 7, 7, 10, 12, 18, 18, 18, 21],
+  [1, 2, 3, 4, 5, 6],
+];
 
-// Example 2:
-const nums2 = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4];
-console.log(removeDuplicates(nums2));
+const executeDriverCode = (testCases) => {
+  let count = 1;
+  for (const testCase of testCases) {
+    console.log("Case", count++ + ":");
+    console.log("Input:", testCase);
+    const output = removeDuplicates(testCase);
+    console.log("Output:", output);
+    console.log("Modified Array:", testCase.slice(0, output));
+    console.log("\n");
+  }
+};
 
-// Example 3:
-const nums3 = [-2, -2, 0, 0, 2, 2, 3, 3, 5, 5];
-console.log(removeDuplicates(nums3));
-
-// Example 4:
-const nums4 = [10, 10, 10, 10, 10];
-console.log(removeDuplicates(nums4));
-
-// Example 5:
-const nums5 = [4, 7, 7, 10, 12, 18, 18, 18, 21];
-console.log(removeDuplicates(nums5));
-
-// Example 6:
-const nums6 = [1, 2, 3, 4, 5, 6];
-console.log(removeDuplicates(nums6));
+executeDriverCode(testCases);
