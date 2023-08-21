@@ -35,7 +35,7 @@ const testCases = [
 const executeDriverCode = (testCases) => {
   let count = 1;
   for (const testCase of testCases) {
-    console.log(`\n------- Test case ${count++}: -------`);
+    console.log(`\n------ Test case ${count++}: ------`);
     console.log("Input:", testCase);
     console.log("Maximum Profit:", maxProfit(testCase));
   }
